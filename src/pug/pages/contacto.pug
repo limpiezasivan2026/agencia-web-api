@@ -1,0 +1,32 @@
+extends ../layout/base.pug
+
+block content
+  section.hero(style="padding-block: 4rem;")
+    .hero__inner
+      h1.hero__title Hablemos de tu proyecto
+      p.hero__lead Rellena el formulario y te enviaremos una auditoría gratuita en menos de 48 horas.
+
+  section.section
+    .container
+      form#contactForm.form
+        .form__field
+          label.form__label(for="nombre") Nombre *
+          input.form__input(type="text", id="nombre", name="nombre", required, placeholder="Tu nombre")
+        
+        .form__field
+          label.form__label(for="email") Email *
+          input.form__input(type="email", id="email", name="email", required, placeholder="tu@email.com")
+        
+        .form__field
+          label.form__label(for="telefono") Teléfono (opcional)
+          input.form__input(type="tel", id="telefono", name="telefono", placeholder="600 000 000")
+        
+        .form__field
+          label.form__label(for="mensaje") ¿Qué necesitas? *
+          textarea.form__textarea(id="mensaje", name="mensaje", required, placeholder="Cuéntame qué web tienes y qué te gustaría mejorar...")
+        
+        div(style="margin-top: 1rem;")
+          button.btn.btn--primary(type="submit") Pedir auditoría gratis
+        
+        //- Aquí el JS inyectará el mensaje de éxito o error
+        div#formMessage(style="margin-top: 1rem; font-weight: bold;")

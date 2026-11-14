@@ -1,0 +1,89 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Hero — fondo navy, texto blanco
+.hero {
+  padding-block: $space-24;
+  background: linear-gradient(160deg, $color-navy 0%, $color-navy-soft 100%);
+  color: $color-white;
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    @include container;
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    padding: $space-1 $space-4;
+    background: rgba(251, 191, 36, 0.15);
+    color: $color-yellow;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: $radius-full;
+    font-size: $fs-xs;
+    font-weight: 600;
+    margin-bottom: $space-6;
+    letter-spacing: 0.02em;
+  }
+
+  &__title {
+    color: $color-white;
+    margin-bottom: $space-6;
+  }
+
+  &__lead {
+    font-size: $fs-md;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: $space-8;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-4;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// Comparativa
+.compare {
+  &__grid {
+    display: grid;
+    gap: $space-4;
+    margin-top: $space-8;
+    @include respond-to(md) { grid-template-columns: 1fr 1fr; }
+  }
+}
+
+// Features
+.features {
+  &__grid {
+    display: grid;
+    gap: $space-6;
+    margin-top: $space-8;
+    @include respond-to(md) { grid-template-columns: repeat(3, 1fr); }
+  }
+}
+
+// CTA final — fondo navy con botón naranja
+.cta-final {
+  text-align: center;
+  padding-block: $space-24;
+  background: $color-navy;
+  color: $color-white;
+
+  h2 {
+    color: $color-white;
+    margin-bottom: $space-4;
+  }
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: $space-8;
+  }
+}

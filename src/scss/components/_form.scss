@@ -1,0 +1,40 @@
+@use '../abstracts/variables' as *;
+
+.form {
+  display: grid;
+  gap: $space-4;
+  max-width: 560px;
+
+  &__field { display: grid; gap: $space-2; }
+
+  &__label {
+    font-family: $font-base;
+    font-weight: 500;
+    font-size: $fs-sm;
+    color: $color-navy;
+  }
+
+  &__input,
+  &__textarea {
+    padding: $space-3 $space-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    transition: border-color $transition;
+
+    &:focus {
+      border-color: $color-orange;
+      outline: none;
+    }
+  }
+
+  &__textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  &__msg { font-size: $fs-sm; }
+  &__msg--ok { color: $color-success; }
+  &__msg--error { color: $color-error; }
+}

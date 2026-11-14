@@ -1,0 +1,55 @@
+extends ../layout/base.pug
+
+block content
+  //- HERO NAVY
+  section.hero
+    .hero__inner
+      span.hero__eyebrow Stack propio · Sin CMS · Sin plugins
+      h1.hero__title Webs rápidas, sin mantenimiento y hasta un 30% más baratas
+      p.hero__lead Rehacemos tu web actual con Node.js, Pug y Sass. Misma estructura, mejor velocidad, imágenes nuevas y copy reescrito. Sin WordPress, sin plugins que se rompan.
+      .hero__actions
+        a.btn.btn--primary(href="/contacto") Pedir auditoría gratis
+        a.btn.btn--ghost(href="/casos") Ver casos
+
+  //- COMPARATIVA
+  section.section.section--alt
+    .container
+      h2 Por qué no WordPress
+      p(style="color:#475569;margin-top:.5rem") Lo que cambia cuando no hay CMS de por medio.
+      .compare__grid
+        .card
+          h3.card__title WordPress típico
+          ul(style="list-style:none;padding:0;color:#475569;display:grid;gap:.5rem;margin-top:1rem;")
+            li Hosting + plugins + mantenimiento
+            li 2–4 s de carga
+            li Actualizaciones que rompen cosas
+            li Vulnerabilidades por plugins
+        .card
+          h3.card__title Con Agencia Web
+          ul(style="list-style:none;padding:0;color:#475569;display:grid;gap:.5rem;margin-top:1rem;")
+            li VPS + dominio + monitorización
+            li Menos de 1 s de carga
+            li Sin CMS, sin updates
+            li Sin plugins, sin vulnerabilidades
+
+  //- FEATURES
+  section.section
+    .container
+      h2 Qué incluye
+      .features__grid
+        .card
+          h3.card__title Velocidad real
+          p.card__text HTTP/2 + CDN + Brotli + imágenes AVIF. Medible con Lighthouse.
+        .card
+          h3.card__title Sin mantenimiento de CMS
+          p.card__text No hay plugins que actualizar ni themes que se rompan. Nosotros monitorizamos.
+        .card
+          h3.card__title Copy e imágenes nuevas
+          p.card__text Reescribimos textos y generamos imágenes de más calidad. Sin copiar nada.
+
+  //- CTA FINAL
+  section.cta-final
+    .container
+      h2 ¿Hablamos de tu web?
+      p Auditoría gratuita en 48 h. Sin compromiso.
+      a.btn.btn--light(href="/contacto") Pedir auditoría

@@ -1,0 +1,28 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.container { @include container; }
+
+.section {
+  padding-block: $space-16;
+
+  &--alt { background: $color-bg-alt; }
+}
+
+a:focus-visible,
+button:focus-visible { @include focus-ring; }
+
+.skip-link {
+  @include visually-hidden;
+  &:focus-visible {
+    position: fixed;
+    top: $space-2; left: $space-2;
+    width: auto; height: auto;
+    padding: $space-2 $space-4;
+    background: $color-orange;
+    color: $color-white;
+    border-radius: $radius-md;
+    z-index: 1000;
+    clip: auto;
+  }
+}

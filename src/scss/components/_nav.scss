@@ -1,0 +1,28 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.mobile-nav {
+  position: fixed;
+  inset: $header-h 0 0 0;
+  background: $color-white;
+  padding: $space-8 $space-6;
+  transform: translateX(100%);
+  transition: transform $transition;
+  z-index: 90;
+
+  &[data-open="true"] { transform: translateX(0); }
+
+  a {
+    display: block;
+    padding: $space-4 0;
+    font-family: $font-base;
+    font-size: $fs-md;
+    font-weight: 500;
+    text-decoration: none;
+    color: $color-navy;
+    border-bottom: 1px solid $color-border;
+    transition: color $transition;
+
+    &:hover { color: $color-orange; }
+  }
+}

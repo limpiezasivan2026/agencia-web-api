@@ -1,0 +1,27 @@
+@use '../abstracts/variables' as *;
+
+.card {
+  background: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  transition: box-shadow $transition, transform $transition;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+    border-color: rgba(249, 115, 22, 0.3);
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $fs-md;
+    margin-bottom: $space-2;
+    color: $color-navy;
+  }
+
+  &__text {
+    color: $color-muted;
+    font-size: $fs-sm;
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "index": {
+    "title": "Agencia Web — Webs rápidas sin mantenimiento de CMS",
+    "description": "Rehacemos tu web con stack propio: más rápida, sin plugins y hasta un 30% más barata que tu WordPress actual.",
+    "canonical": "/",
+    "ogImage": "/assets/img/og-home.jpg",
+    "schemaType": "LocalBusiness"
+  },
+  "servicios": {
+    "title": "Servicios — Agencia Web",
+    "description": "Web nueva, rehacer web existente, mantenimiento mensual y auditoría técnica. Stack propio, sin CMS.",
+    "canonical": "/servicios",
+    "ogImage": "/assets/img/og-servicios.jpg",
+    "schemaType": "Service"
+  },
+  "proceso": {
+    "title": "Cómo trabajo — Agencia Web",
+    "description": "Proceso en 5 pasos: análisis, diseño, desarrollo, despliegue y entrega. Sin sorpresas.",
+    "canonical": "/proceso",
+    "ogImage": "/assets/img/og-proceso.jpg",
+    "schemaType": "WebPage"
+  },
+  "casos": {
+    "title": "Casos y demos — Agencia Web",
+    "description": "Ejemplos reales de webs rehechas: métricas de velocidad, Lighthouse y resultados.",
+    "canonical": "/casos",
+    "ogImage": "/assets/img/og-casos.jpg",
+    "schemaType": "WebPage"
+  },
+  "contacto": {
+    "title": "Contacto — Agencia Web",
+    "description": "Pide tu auditoría gratuita en 48 h. Cuéntanos tu web actual y te decimos qué mejorar.",
+    "canonical": "/contacto",
+    "ogImage": "/assets/img/og-contacto.jpg",
+    "schemaType": "ContactPage"
+  }
+}

@@ -1,0 +1,17 @@
+footer.site-footer
+  .site-footer__inner
+    div
+      strong= site.brand.name
+      p= site.brand.tagline
+    div
+      h4 Navegación
+      ul
+        li: a(href="/servicios") Servicios
+        li: a(href="/proceso") Proceso
+        li: a(href="/casos") Casos
+        li: a(href="/contacto") Contacto
+    div
+      h4 Contacto
+      ul
+        li: a(href=`mailto:${site.brand.email}`)= site.brand.email
+  p(style="text-align:center;margin-top:2rem") © #{new Date().getFullYear()} #{site.brand.name}

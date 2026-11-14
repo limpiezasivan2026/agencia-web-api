@@ -1,0 +1,25 @@
+extends ../layout/base.pug
+
+block content
+  section.hero(style="padding-block: 4rem;")
+    .hero__inner
+      h1.hero__title Servicios
+      p.hero__lead Todo lo que necesitas para tener una web rápida, segura y sin dolores de cabeza.
+
+  section.section
+    .container
+      .features__grid
+        .card
+          h3.card__title Web Nueva
+          p.card__text Diseñamos y desarrollamos tu web desde cero con nuestro stack propio. Carga ultrarrápida y diseño a medida.
+          a.btn.btn--ghost(href="/contacto", style="margin-top:1.5rem;width:100%") Solicitar info
+        
+        .card
+          h3.card__title Rehacer Web
+          p.card__text ¿Tienes WordPress y va lento? Mantenemos tu estructura, pero reescribimos textos y mejoramos imágenes. Hasta 30% más barato.
+          a.btn.btn--ghost(href="/contacto", style="margin-top:1.5rem;width:100%") Solicitar info
+
+        .card
+          h3.card__title Mantenimiento
+          p.card__text Olvídate de actualizar plugins. Nosotros nos encargamos del hosting, el SSL, la monitorización y los informes SEO.
+          a.btn.btn--ghost(href="/contacto", style="margin-top:1.5rem;width:100%") Solicitar info

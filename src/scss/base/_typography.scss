@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as *;
+
+body {
+  font-family: $font-base;
+  font-size: $fs-sm;
+  color: $color-text;
+  background: $color-bg;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-display;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: $fs-xl; }
+h2 { font-size: $fs-lg; }
+h3 { font-size: $fs-md; }
+
+p { color: $color-text; }
+
+code, pre { font-family: $font-mono; }

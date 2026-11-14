@@ -1,0 +1,36 @@
+{
+  "name": "agencia-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build.js --watch",
+    "build": "node scripts/build.js",
+    "build:critical": "node scripts/build.js --critical",
+    "build:prod": "npm run build && node scripts/build.js --critical",
+    "optimizar": "node tools/optimizar-imagenes.js src/assets/img public/assets/img && node tools/minificar.js public",
+    "zip": "node tools/empaquetar.js",
+    "serve": "serve public -l 3000",
+    "start": "node server/server.js",
+    "dev:server": "node --watch server/server.js",
+    "clean": "rm -rf public"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "critical": "^9.0.0",
+    "esbuild": "^0.28.2",
+    "pug": "^3.0.4",
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.105.1",
+    "serve": "^14.2.6",
+    "ssas": "^0.0.1",
+    "terser": "^5.51.2"
+  }
+}

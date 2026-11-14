@@ -1,0 +1,32 @@
+{
+  "brand": {
+    "name": "Agencia Web",
+    "shortName": "Agencia",
+    "tagline": "Webs rápidas, sin mantenimiento de CMS",
+    "email": "hola@agencia-web.test",
+    "phone": "",
+    "address": "",
+    "city": "",
+    "country": "ES"
+  },
+  "domain": {
+    "url": "http://localhost:3000",
+    "urlProd": "https://agencia-web.es"
+  },
+  "social": {
+    "twitter": "",
+    "linkedin": "",
+    "github": ""
+  },
+  "seo": {
+    "defaultTitle": "Agencia Web — Webs rápidas sin mantenimiento de CMS",
+    "defaultDescription": "Rehacemos tu web con stack propio: más rápida, sin plugins y hasta un 30% más barata que tu WordPress actual.",
+    "defaultOgImage": "/assets/img/og-home.jpg",
+    "locale": "es_ES"
+  },
+  "legal": {
+    "companyName": "Agencia Web",
+    "cif": "",
+    "privacyEmail": "privacidad@agencia-web.test"
+  }
+}

@@ -1,0 +1,10 @@
+doctype html
+html(lang="es")
+  head
+    include ../partials/head.pug
+  body
+    include ../partials/header.pug
+    main#main
+      block content
+    include ../partials/footer.pug
+    script(type="module", src="/js/main.js")

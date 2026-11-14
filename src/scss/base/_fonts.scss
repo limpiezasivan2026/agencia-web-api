@@ -1,0 +1,60 @@
+// ============================================================
+// @font-face — Clash Display, Satoshi, JetBrains Mono
+// ============================================================
+
+// --- Clash Display (titulares) ---
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/fonts/ClashDisplay-Variable.woff2') format('woff2-variations'),
+       url('/assets/fonts/ClashDisplay-Variable.woff')  format('woff');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// --- Satoshi (cuerpo) ---
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/assets/fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('/assets/fonts/Satoshi-Regular.woff')  format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/assets/fonts/Satoshi-Medium.woff2') format('woff2'),
+       url('/assets/fonts/Satoshi-Medium.woff')  format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/assets/fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('/assets/fonts/Satoshi-Bold.woff')  format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/assets/fonts/Satoshi-Black.woff2') format('woff2'),
+       url('/assets/fonts/Satoshi-Black.woff')  format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// --- JetBrains Mono (código) ---
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/JetBrainsMono-Italic-VariableFont_wght.woff2') format('woff2-variations'),
+       url('/assets/fonts/JetBrainsMono-Italic-VariableFont_wght.woff')  format('woff');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
