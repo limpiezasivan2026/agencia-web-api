@@ -13,13 +13,8 @@ export function initForm() {
     const data = Object.fromEntries(new FormData(form));
 
     try {
-      // AQUÍ PONDRÁS LA URL DE TU COOLIFY CUANDO LO TENGAS.
-      // Mientras tanto, en local seguirá apuntando a localhost.
-      const API_URL = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3000/api/contacto' 
-        : 'https://api.tudominio.com/api/contacto'; // <-- Cambiar por tu URL real
-
-      const res = await fetch(API_URL, {
+      // AQUÍ ESTÁ LA MAGIA: Apuntamos a tu API en Vercel
+      const res = await fetch('https://agencia-web-api.vercel.app/api/contacto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

@@ -17,7 +17,11 @@ const PUBLIC_DIR = path.join(__dirname, '..', 'public');
 
 // 1. Seguridad y CORS
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(cors());
+app.use(cors({
+  origin: '*', // Permite peticiones desde cualquier sitio (tu web local, Cloudflare, etc.)
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json());
 
 // 2. Rate Limit (Evitar spam en el formulario)
