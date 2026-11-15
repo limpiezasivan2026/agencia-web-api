@@ -33,5 +33,12 @@
     "canonical": "/contacto",
     "ogImage": "/assets/img/og-contacto.jpg",
     "schemaType": "ContactPage"
+  },
+    "blog": {
+    "title": "Blog — Agencia Web",
+    "description": "Consejos sobre velocidad, diseño web y mantenimiento cero.",
+    "canonical": "/blog",
+    "ogImage": "/assets/img/og-home.jpg",
+    "schemaType": "Blog"
   }
 }

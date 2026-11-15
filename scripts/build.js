@@ -4,6 +4,8 @@ import pug from 'pug';
 import { promises as fs } from 'fs';
 import { join, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
+import critical from 'critical';
+import { generarEntryJS } from './generar-entry.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -45,8 +47,10 @@ async function compileSass() {
 }
 
 async function compileJs() {
+  const entryPath = await generarEntryJS(SRC);
+
   await esbuild({
-    entryPoints: [join(SRC, 'js/main.js')],
+    entryPoints: [entryPath],
     bundle: true,
     minify: !WATCH,
     sourcemap: WATCH ? 'inline' : false,
@@ -55,7 +59,9 @@ async function compileJs() {
     outfile: join(OUT, 'js/main.js'),
     logLevel: 'silent',
   });
-  console.log('✔ JS → public/js/main.js');
+  
+  await fs.rm(entryPath, { force: true });
+  console.log(`✔ JS → public/js/main.js (${!WATCH ? 'Minificado' : 'Desarrollo'})`);
 }
 
 async function compilePug() {
@@ -64,29 +70,69 @@ async function compilePug() {
   
   const pagesData = JSON.parse(await fs.readFile(join(SRC, 'pug/pages/pages.json'), 'utf8'));
   const pagesDir = join(SRC, 'pug/pages');
-  const files = await fs.readdir(pagesDir);
-  
-  for (const file of files) {
-    if (!file.endsWith('.pug')) continue;
-    const name = basename(file, '.pug');
-    const meta = pagesData[name] || {};
+
+  let blogData = [];
+  try {
+    const rawBlog = await fs.readFile(join(pagesDir, 'blog.json'), 'utf8');
+    blogData = JSON.parse(rawBlog);
+  } catch (e) {}
+
+  // Función recursiva para buscar .pug en subcarpetas
+  async function procesarDirectorio(dir, rutaRelativa = '') {
+    const items = await fs.readdir(dir, { withFileTypes: true });
     
-    const canonical = meta.canonical
-      ? `${SITE_URL.replace(/\/$/, '')}${meta.canonical}`
-      : `${SITE_URL}/`;
-      
-    const html = pug.renderFile(join(pagesDir, file), {
-      ...meta,
-      canonical,
-      siteUrl: SITE_URL,
-      site,          // <-- AHORA PUG TIENE ACCESO A site.brand.name, site.brand.email, etc.
-      pretty: WATCH,
-      basedir: join(SRC, 'pug'),
-    });
-    
-    await fs.writeFile(join(OUT, `${name}.html`), html);
-    console.log(`✔ Pug → public/${name}.html`);
+    for (const item of items) {
+      const fullPath = join(dir, item.name);
+      const relPath = rutaRelativa ? `${rutaRelativa}/${item.name}` : item.name;
+
+      if (item.isDirectory()) {
+        // Si es una carpeta, entramos recursivamente
+        await procesarDirectorio(fullPath, relPath);
+      } else if (item.name.endsWith('.pug')) {
+        // Si es un archivo .pug, lo compilamos
+        const name = basename(item.name, '.pug');
+        if (name === 'articulo' || name.startsWith('_')) continue; // Ignorar plantillas base
+        
+        const meta = pagesData[name] || {};
+        const canonical = meta.canonical 
+          ? `${SITE_URL.replace(/\/$/, '')}${meta.canonical}` 
+          : `${SITE_URL}/${relPath.replace('.pug', '')}`;
+
+        const outDir = join(OUT, dirname(relPath));
+        const outPath = join(OUT, `${relPath.replace('.pug', '.html')}`);
+
+        const html = pug.renderFile(fullPath, {
+          ...meta,
+          canonical,
+          siteUrl: SITE_URL,
+          site,
+          articulos: blogData,
+          pretty: WATCH,
+          basedir: join(SRC, 'pug'),
+        });
+
+        await fs.mkdir(outDir, { recursive: true });
+        await fs.writeFile(outPath, html);
+        console.log(`✔ Pug → ${relPath.replace('.pug', '.html')}`);
+      }
+    }
   }
+
+  await procesarDirectorio(pagesDir);
+
+  // Generar artículos del blog
+  try {
+    await fs.mkdir(join(OUT, 'blog'), { recursive: true });
+    for (const articulo of blogData) {
+      const html = pug.renderFile(join(pagesDir, 'articulo.pug'), {
+        ...articulo, siteUrl: SITE_URL, site,
+        canonical: `${SITE_URL}/blog/${articulo.slug}`,
+        pretty: WATCH, basedir: join(SRC, 'pug'),
+      });
+      await fs.writeFile(join(OUT, 'blog', `${articulo.slug}.html`), html);
+      console.log(`✔ Pug → blog/${articulo.slug}.html`);
+    }
+  } catch (e) {}
 }
 
 async function copyAssets() {
@@ -117,7 +163,7 @@ async function generateRobots() {
 
 async function runCritical() {
   if (!CRITICAL) return;
-  console.log('⏭ Critical CSS: pendiente de implementar');
+  console.log('⏭ Critical CSS: desactivado temporalmente para evitar conflictos.');
 }
 
 async function buildAll() {

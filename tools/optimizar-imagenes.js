@@ -11,9 +11,16 @@ if (!origen || !destino) {
   process.exit(1);
 }
 
-const TAMANOS = { movil: 400, tablet: 800, web: 1200 };
+// Tamaños optimizados para responsive
+const TAMANOS = {
+  movil: { ancho: 400, calidad: 75 },
+  tablet: { ancho: 800, calidad: 80 },
+  web: { ancho: 1200, calidad: 85 }
+};
 
 async function procesarCarpeta(carpetaActual, rutaRelativa = '') {
+  if (!fs.existsSync(carpetaActual)) return;
+  
   const archivos = fs.readdirSync(carpetaActual);
   const destinoActual = path.join(destino, rutaRelativa);
 
@@ -28,26 +35,27 @@ async function procesarCarpeta(carpetaActual, rutaRelativa = '') {
       continue;
     }
 
+    // Ignoramos SVGs o archivos que no sean imágenes
     if (!/\.(jpg|jpeg|png|webp|tiff|bmp)$/i.test(archivo)) continue;
 
     const id = path.parse(archivo).name;
     console.log(`🖼️ Procesando: ${rutaRelativa}/${archivo}`);
 
-    for (const [disp, ancho] of Object.entries(TAMANOS)) {
-      // AVIF
+    for (const [disp, config] of Object.entries(TAMANOS)) {
+      // 1. Generar AVIF
       await sharp(rutaOriginal)
-        .resize({ width: ancho, withoutEnlargement: true })
-        .toFormat('avif', { quality: 80, effort: 6 })
+        .resize({ width: config.ancho, withoutEnlargement: true }) // No agranda si la original es más pequeña
+        .toFormat('avif', { quality: config.calidad, effort: 6 })
         .toFile(path.join(destinoActual, `${id}-${disp}.avif`));
         
-      // WebP (por si el navegador es viejo)
+      // 2. Generar WebP (Fallback para navegadores viejos)
       await sharp(rutaOriginal)
-        .resize({ width: ancho, withoutEnlargement: true })
-        .webp({ quality: 80 })
+        .resize({ width: config.ancho, withoutEnlargement: true })
+        .webp({ quality: config.calidad })
         .toFile(path.join(destinoActual, `${id}-${disp}.webp`));
     }
   }
 }
 
-console.log('🚀 Iniciando optimización...');
-procesarCarpeta(origen).then(() => console.log('✅ Imágenes optimizadas correctamente.'));
+console.log('🚀 Iniciando optimización de imágenes responsive...');
+procesarCarpeta(origen).then(() => console.log('✅ Imágenes optimizadas (AVIF + WebP) en 3 tamaños.'));

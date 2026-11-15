@@ -1,0 +1,16 @@
+//- src/pug/pages/catalogos/componentes/_tarjeta-plato.pug
+.rest-plato-card
+  //- La imagen con la caja de valoración flotando
+  .rest-plato-card__img(style="background-image: url('')")
+    .rest-plato-card__rating
+      span.stars ⭐ 4.9 (5.7K)
+  
+  //- El contenido de la tarjeta
+  .rest-plato-card__content
+    h3.rest-plato-card__title Título del plato
+    p.ingredients 4 Chicken Legs • Chili Sauce • Soft Drinks
+    .rest-plato-card__footer
+      .prices
+        span.old-price $35.00
+        span.new-price $34.00
+      button.btn-cart 🛒 Add to Cart

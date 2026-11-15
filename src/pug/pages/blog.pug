@@ -1,0 +1,18 @@
+extends ../layout/base.pug
+
+block content
+  section.hero(style="padding-block: 4rem;")
+    .hero__inner
+      h1.hero__title Blog de Agencia Web
+      p.hero__lead Consejos sobre velocidad, diseño web y mantenimiento cero.
+
+  section.section
+    .container
+      //- Ya no usamos require, usamos la variable "articulos" que viene del build
+      .features__grid
+        each articulo in articulos
+          .card
+            p(style="font-size:0.875rem; color:#F97316; font-weight:bold; margin-bottom:0.5rem;")= articulo.fecha
+            h3.card__title= articulo.titulo
+            p.card__text(style="margin-bottom:1.5rem;")= articulo.extracto
+            a.btn.btn--ghost(href=`/blog/${articulo.slug}`, style="width:100%") Leer artículo

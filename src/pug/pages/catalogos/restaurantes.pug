@@ -1,0 +1,136 @@
+extends ../../layout/base.pug
+
+block content
+  .restaurante-demo
+
+    //- 1. BARRA SUPERIOR (Top Bar)
+    .rest-topbar
+      .rest-topbar__inner
+        .rest-topbar__left
+          span 📞 +1 234 567 890
+          span ✉️ food@restan.com
+        .rest-topbar__right
+          span 📍 175 10th Street, Berlin
+
+    //- 2. HEADER CON EFECTO AL HACER SCROLL
+    header.rest-header#restHeader
+      .rest-header__inner
+        nav.rest-header__nav
+          a(href="#") Home
+          a(href="#") Pages
+          a(href="#") Menu
+        .rest-header__logo
+          span RESTAN
+        nav.rest-header__nav
+          a(href="#") Blog
+          a(href="#") Shop
+          a(href="#") Contact Us
+
+    //- 3. SLIDER HERO (Animación de fondo)
+
+    section.rest-hero
+      .rest-hero__slider
+        .rest-hero__slide.active(style="background-image: url('/assets/img/restaurante/hero-bg.jpg');")
+        .rest-hero__slide(style="background-image: url('/assets/img/restaurante/hero-bg-2.jpg');")
+        .rest-hero__slide(style="background-image: url('/assets/img/restaurante/hero-bg-3.jpg');")
+      
+      .rest-hero__content
+        h1.rest-hero__title Best Restaurant
+        .rest-hero__badge
+          span BEST FOOD SINCE 1865
+
+    //- 4. TARJETA DE RESERVA
+    section.rest-reserva
+      .rest-reserva__card
+        .rest-reserva__header
+          span(style="font-size: 1.5rem;") 🍴
+          h2 Book a table
+        form.rest-reserva__form
+          input(type="tel" placeholder="Phone")
+          select
+            option 1 Person
+            option 2 Persons
+          input(type="date")
+          select
+            option 10:00 AM
+            option 12:00 PM
+          button.btn-rest(type="submit") Book A Table
+
+    //- 5. CATEGORÍAS POPULARES (Con animación de Fade al scroll)
+    section.rest-categorias.animate-on-scroll
+      .container
+        .rest-categorias__header
+          h2 🔥 Our Popular category
+          .rest-categorias__arrows
+            span &larr;
+            span &rarr;
+        .rest-categorias__grid
+          .rest-categoria-card
+            img(src="/assets/img/restaurante/plato-1.jpg" alt="Main Dishes")
+            span Main Dishes
+            h3 Chicken Alfredo
+          .rest-categoria-card
+            img(src="/assets/img/restaurante/plato-2.jpg" alt="Desserts")
+            span Desserts
+            h3 Cheesecakes
+          .rest-categoria-card
+            img(src="/assets/img/restaurante/plato-3.jpg" alt="Sea Food")
+            span Sea Food
+            h3 Salmon Fry
+
+    //- 6. MENÚ CON PESTAÑAS
+    section.rest-menu
+      .container
+        .rest-menu__header
+          span FOOD MENU
+          h2 Our Specials Menu
+        
+        .rest-menu__tabs
+          button.rest-tab.active(data-target="main") MAIN DISHES
+          button.rest-tab(data-target="desserts") DESSERTS
+          button.rest-tab(data-target="seafood") SEA FOOD
+          button.rest-tab(data-target="beverage") BEVERAGE
+
+        //- Aquí es donde el JS va a inyectar las tarjetas
+        .rest-menu__grid#menuGrid
+          //- Podemos incluir una tarjeta de ejemplo para que no esté vacío antes de que cargue el JS
+          include componentes/_tarjeta-plato.pug
+          
+    //- 7. FOOTER COMPLETO
+    footer.rest-footer
+      .container
+        .rest-footer__grid
+          .rest-footer__col
+            h3 About Us
+            p Continued at zealously necessary is Surrounded sir motionless she end literature. Gay direction neglected.
+            .rest-footer__social
+              a(href="#") f
+              a(href="#") t
+              a(href="#") in
+          .rest-footer__col
+            h3 Explore
+            ul
+              li: a(href="#") Company Profile
+              li: a(href="#") About
+              li: a(href="#") Help Center
+              li: a(href="#") Career
+              li: a(href="#") Features
+              li: a(href="#") Contact
+          .rest-footer__col
+            h3 Contact Info
+            ul.rest-footer__contact
+              li 📍 175 10th Street, Office 375 Berlin, De 21562
+              li 📞 +123 34598768
+              li ✉️ food@restan.com
+          .rest-footer__col
+            h3 Newsletter
+            p Join our subscribers list to get the latest news and special offers.
+            form.rest-newsletter
+              input(type="email" placeholder="Your Email")
+              button(type="submit") &rarr;
+              label(style="display:flex; gap:0.5rem; margin-top:1rem; font-size:0.75rem;")
+                input(type="checkbox")
+                | I agree to the Privacy Policy
+      .rest-footer__bottom
+        .container
+          p © Copyright 2026 Restan. All Rights Reserved

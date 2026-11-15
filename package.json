@@ -9,11 +9,15 @@
     "build:critical": "node scripts/build.js --critical",
     "build:prod": "npm run build && node scripts/build.js --critical",
     "optimizar": "node tools/optimizar-imagenes.js src/assets/img public/assets/img && node tools/minificar.js public",
+    "build:prod": "npm run build && node scripts/build.js --critical",
+    "preparar-cliente": "node tools/preparar-cliente.js",
     "zip": "node tools/empaquetar.js",
     "serve": "serve public -l 3000",
     "start": "node server/server.js",
     "dev:server": "node --watch server/server.js",
-    "clean": "rm -rf public"
+    "clean": "rm -rf public",
+    "nuevo-cliente": "node tools/init-cliente.js",
+    "page": "node scripts/build-page.js"
   },
   "dependencies": {
     "better-sqlite3": "^12.9.0",

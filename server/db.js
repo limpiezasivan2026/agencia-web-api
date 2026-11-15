@@ -34,3 +34,8 @@ export function guardarLead(data) {
   const info = stmt.run(data);
   return info.lastInsertRowid;
 }
+
+export function obtenerLeads() {
+  if (!db) throw new Error('Base de datos no inicializada');
+  return db.prepare('SELECT * FROM leads ORDER BY fecha DESC').all();
+}

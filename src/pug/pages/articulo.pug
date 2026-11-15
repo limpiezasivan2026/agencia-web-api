@@ -1,0 +1,12 @@
+extends ../layout/base.pug
+
+block content
+  section.hero(style="padding-block: 4rem; background: #F8FAFC; color: #0B1F3A;")
+    .hero__inner(style="text-align: left; max-width: 800px; margin: 0 auto;")
+      p(style="color:#F97316; font-weight:bold; margin-bottom:1rem;")= fecha
+      h1(style="font-size:3rem; margin-bottom:1rem; color:#0B1F3A;")= titulo
+      a(href="/blog", style="color:#475569; text-decoration:underline;") ← Volver al blog
+
+  section.section
+    .container(style="max-width: 800px; margin: 0 auto; font-size:1.125rem; line-height:1.8; color:#334155;")
+      p= contenido

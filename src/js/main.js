@@ -14,3 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
   console.log('🚀 Agencia Web cargada correctamente');
 });
+
+
+
+const miVariableSecreta = "Hola, soy el main"; 
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ... tus inits
+  console.log(miVariableSecreta);
+});

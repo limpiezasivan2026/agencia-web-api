@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "por-que-wordpress-es-lento",
+    "titulo": "Por qué tu WordPress es lento (y cómo solucionarlo)",
+    "fecha": "15 de Noviembre, 2026",
+    "extracto": "Descubre los 3 motivos principales por los que tu web tarda en cargar y cómo una web estática puede multiplicar tu velocidad.",
+    "contenido": "Si tienes una web hecha en WordPress, es muy probable que haya empezado a ir lenta con el tiempo. Esto se debe a tres factores: los plugins, las consultas a la base de datos y el hosting compartido. En este artículo te explico cómo una web desarrollada con código estático no necesita base de datos para mostrar tu información, cargando en menos de un segundo."
+  },
+  {
+    "slug": "que-es-el-mantenimiento-cero",
+    "titulo": "Qué es el 'Mantenimiento Cero' y por qué te ahorrará dinero",
+    "fecha": "10 de Noviembre, 2026",
+    "extracto": "Olvídate de pagar mensualmente por actualizar plugins o contratar seguridad. Te contamos cómo funciona nuestro modelo.",
+    "contenido": "El mantenimiento cero significa que tu web no tiene partes móviles que puedan romperse. Al no usar CMS como WordPress, no hay plugins que actualizar, ni vulnerabilidades de seguridad conocidas. Tu web es un archivo estático alojado en un CDN global."
+  }
+]
